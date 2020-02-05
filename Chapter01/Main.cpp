@@ -7,7 +7,7 @@ int main(int argc, char**argv)
 	bool success = game.Initialize();
 	if (success)
 	{
-		game.Runloop();
+		game.RunLoop();
 	}
 	game.Shutdown();
 	return 0; 
