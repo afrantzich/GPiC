@@ -69,16 +69,52 @@ void Game::ProcessInput()
 		// Get state of keyboard
 		const Uint8* state = SDL_GetKeyboardState(NULL);
 		// If escape is pressed, also end loop
+		mPaddleDir = 0;
 		if (state[SDL_SCANCODE_ESCAPE])
 		{
 			mIsRunning = false;
+		}
+		if (state[SDL_SCANCODE_W])
+		{
+			mPaddleDir -= 1;
+		}
+		if (state[SDL_SCANCODE_S])
+		{
+			mPaddleDir += 1;
 		}
 	}
 }
 
 void Game::UpdateGame()
 {
+	//Handle delta time & frame limiting
+	// Wait until 16ms has elapsed since last frame
+	while (!SDL_TICKS_PASSED(SDL_GetTicks(), mTicksCount + 16))
+		;
 
+	//Delta time is the difference in ticks from last frame (converted to seconds)
+	float deltaTime = (SDL_GetTicks() - mTicksCount) / 1000.0f;
+
+	// Clamp maximum deltaTime (in case frame is paused)
+	if (deltaTime > 0.05f)
+	{
+		deltaTime = 0.05f; 
+	}
+
+	// Move paddle  300 pixels/sec
+	if (mPaddleDir != 0)
+	{
+		mPaddlePos.y += mPaddleDir * 300.0f * deltaTime;
+	}
+	// Stop paddle from moving off screen
+	if (mPaddlePos.y < (paddleLen / 2.0f + thickness))
+	{
+		mPaddlePos.y = paddleLen / 2.0f + thickness;
+	}
+	else if (mPaddlePos.y > (768.0f - paddleLen / 2.0f - thickness))
+	{
+		mPaddlePos.y = 768.0f - paddleLen / 2.0f - thickness;
+	}
 }
 
 void Game::GenerateOutput()
