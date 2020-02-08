@@ -44,6 +44,8 @@ bool Game::Initialize()
 	mPaddlePos.y = 768 / 2;
 	mBallPos.x = 1024 / 2;
 	mBallPos.y = 768 / 2;
+	mBallVel.x = -200.0f;
+	mBallVel.y = 235.0f;
 }
 
 void Game::Shutdown()
@@ -114,6 +116,34 @@ void Game::UpdateGame()
 	else if (mPaddlePos.y > (768.0f - paddleLen / 2.0f - thickness))
 	{
 		mPaddlePos.y = 768.0f - paddleLen / 2.0f - thickness;
+	}
+
+	mBallPos.x += mBallVel.x * deltaTime;
+	mBallPos.y += mBallVel.y * deltaTime;
+
+	// bounce off top wall
+	if (mBallPos.y <= thickness && mBallVel.y < 0.0f)
+	{
+		mBallVel.y *= -1;
+	}
+	// bounce off bot wall
+	if (mBallPos.y >= 768 - thickness && mBallVel.y > 0.0f)
+	{
+		mBallVel.y *= -1;
+	}
+	// bounce off right wall
+	if (mBallPos.x >= 1024 - thickness && mBallVel.x > 0.0f)
+	{
+		mBallVel.x *= -1;
+	}
+	// bounce off paddle
+	// absolute value of the diff in y values. > paddle.y + half len = miss
+	float diff = abs(mBallPos.y - mPaddlePos.y);
+	if (diff < paddleLen / 2 &&
+		mBallPos.x <= 25.0f && mBallPos.x >= 20.0f &&
+		mBallVel.x < 0.0f)
+	{
+		mBallVel.x *= -1.0f;
 	}
 }
 

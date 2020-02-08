@@ -1,4 +1,5 @@
 #include "SDL.h"
+#include <cmath>
 
 struct Vector2 {
 	float x;
@@ -31,4 +32,6 @@ private:
 
 	Vector2 mPaddlePos;
 	Vector2 mBallPos;
+
+	Vector2 mBallVel;
 };
