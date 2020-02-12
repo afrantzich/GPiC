@@ -1,3 +1,6 @@
 ﻿  Game.cpp
-C:\Users\Andrew\CraftingTable\GPiC\Chapter01\Game.cpp(56): warning C4715: 'Game::Initialize': not all control paths return a value
+C:\Users\Andrew\CraftingTable\GPiC\Chapter01\Game.cpp(118,29): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Main.cpp
+  Generating Code...
+C:\Users\Andrew\CraftingTable\GPiC\Chapter01\Game.cpp(57): warning C4715: 'Game::Initialize': not all control paths return a value
   Exercise1.1.vcxproj -> C:\Users\Andrew\CraftingTable\GPiC\Chapter01.1\Exercise1.1\Debug\Exercise1.1.exe
