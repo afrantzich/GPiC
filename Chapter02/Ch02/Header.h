@@ -1,22 +1,49 @@
 #pragma once
-#include "Component.h"
-#include "SDL/SDL.h"
-class SpriteComponent : public Component
+#include "SDL.h"
+#include <unordered_map>
+#include <string>
+#include <vector>
+
+class Game
 {
 public:
-	// Lower draw order corresponds with urther back
-	SpriteComponent(class Actor* owner, int drawOrder = 100);
-	~SpriteComponent();
+	Game();
+	bool Initialize();
+	void RunLoop();
+	void Shutdown();
 
-	virtual void Draw(SDL_Renderer* renderer);
-	virtual void SetTexture(SDL_Texture* texture);
+	void AddActor(class Actor* actor);
+	void RemoveActor(class Actor* actor);
 
-	int GetDrawOrder() const { return mDrawOrder; }
-	int GetTexHeight() const { return mTexHeight; }
-	int getTexWidth() const { retrun mTexWidth; }
-protected:
-	SDL_Texture* mTexture;
-	int mDrawOrder;
-	int mTexWidth;
-	int mTexHeight;
+	void AddSprite(class SpriteComponent* sprite);
+	void RemoveSprite(class SpriteComponent* sprite);
+
+	SDL_Texture* GetTexture(const std::string& fileName);
+private:
+	void ProcessInput();
+	void UpdateGame();
+	void GenerateOutput();
+	void LoadData();
+	void UnloadData();
+
+	// Map of textures loaded
+	std::unordered_map<std::string, SDL_Texture*> mTextures;
+
+	// All the actirs in the game
+	std::vector<class Actor*> mActors;
+	// Any pending actors
+	std::vector<class Actor*> mPendingActors;
+
+	// All the sprite components drawn
+	std::vector<class SpriteComponent*> mSprites;
+
+	SDL_Window* mWindow;
+	SDL_Renderer* mRenderer;
+	Uint32 mTicksCount;
+	bool mIsRunning;
+	// Track if we're updating actors right now
+	bool mUpdatingActors;
+
+	// Game-specific
+	class Ship* mShip;
 };
