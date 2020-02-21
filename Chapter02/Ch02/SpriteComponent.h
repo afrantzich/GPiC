@@ -4,7 +4,7 @@
 class SpriteComponent : public Component
 {
 public:
-	// Lower draw order corresponds with urther back
+	// Lower draw order corresponds with further back
 	SpriteComponent(class Actor* owner, int drawOrder = 100);
 	~SpriteComponent();
 
@@ -13,7 +13,7 @@ public:
 
 	int GetDrawOrder() const { return mDrawOrder; }
 	int GetTexHeight() const { return mTexHeight; }
-	int getTexWidth() const { retrun mTexWidth; }
+	int getTexWidth() const { return mTexWidth; }
 protected:
 	SDL_Texture* mTexture;
 	int mDrawOrder;
