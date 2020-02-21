@@ -1,10 +1,10 @@
-#include "Game.h"
-#include "SDL_image.h"
 #include <algorithm>
-#include "Actor.h"
 #include "SpriteComponent.h"
 #include "Ship.h"
 #include "BGSpriteComponent.h"
+#include "SDL_image.h"
+#include "Game.h"
+#include "Actor.h"
 
 Game::Game()
 	:mWindow(nullptr)

@@ -8,7 +8,7 @@ public:
 	// Set draw order to default to lower so it's in the background
 	BGSpriteComponent(class Actor* owner, int drawOrder = 10);
 	// Update/draw overridden from parent
-	Update(float deltaTime) override;
+	void Update(float deltaTime) override;
 	void Draw(SDL_Renderer* renderer) override;
 	// set the textures used for the background
 	void SetBGTextures(const std::vector<SDL_Texture*>& textures);
