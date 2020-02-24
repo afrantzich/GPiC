@@ -17,11 +17,11 @@ Actor::~Actor()
 {
 	mGame->RemoveActor(this);
 	// Need to delete components
-	// Becaise ~Component calls RemoveComponent, need a different style loop
+	// Because ~Component calls RemoveComponent, need a different style loop
 	while (!mComponents.empty())
 	{
 		delete mComponents.back();
-	}   
+	}
 }
 
 void Actor::Update(float deltaTime)

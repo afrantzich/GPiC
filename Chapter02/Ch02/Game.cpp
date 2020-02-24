@@ -80,7 +80,7 @@ void Game::ProcessInput()
 	}
 
 	// Process ship input
-	mShip->ProcessKeyboard(state);
+	mShip->ProcessKeyboard(state, this);
 }
 
 void Game::UpdateGame()

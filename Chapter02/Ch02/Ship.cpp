@@ -1,11 +1,13 @@
 #include "Ship.h"
 #include "AnimSpriteComponent.h"
 #include "Game.h"
+#include "Munitions.h"
 
 Ship::Ship(Game* game)
 	:Actor(game)
 	, mRightSpeed(0.0f)
 	, mDownSpeed(0.0f)
+	, mReloadSpeed(0.5f)
 {
 	// Create an animated sprite component
 	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
@@ -13,7 +15,7 @@ Ship::Ship(Game* game)
 		game->GetTexture("Assets/Ship01.png"),
 		game->GetTexture("Assets/Ship02.png"),
 		game->GetTexture("Assets/Ship03.png"),
-		game->GetTexture("Assets/Ship04.png"),
+		game->GetTexture("Assets/Ship04.png")
 	};
 	asc->SetAnimTextures(anims);
 }
@@ -25,6 +27,8 @@ void Ship::UpdateActor(float deltaTime)
 	Vector2 pos = GetPosition();
 	pos.x += mRightSpeed * deltaTime;
 	pos.y += mDownSpeed * deltaTime;
+
+	SetReloadTimer( GetReloadTimer() - deltaTime);
 	// Restrict position to left half of screen
 	if (pos.x < 25.0f)
 	{
@@ -45,7 +49,7 @@ void Ship::UpdateActor(float deltaTime)
 	SetPosition(pos);
 }
 
-void Ship::ProcessKeyboard(const uint8_t* state)
+void Ship::ProcessKeyboard(const uint8_t* state, Game* game)
 {
 	mRightSpeed = 0.0f;
 	mDownSpeed = 0.0f;
@@ -66,5 +70,26 @@ void Ship::ProcessKeyboard(const uint8_t* state)
 	if (state[SDL_SCANCODE_W])
 	{
 		mDownSpeed -= 300.0f;
+	}
+	if (state[SDL_SCANCODE_K])
+	{
+		SetReloadSpeed(GetReloadSpeed() - 0.05f);
+	}
+	if (state[SDL_SCANCODE_L])
+	{
+		SetReloadSpeed(GetReloadSpeed() + 0.05f);
+	}
+	// shoot laser
+	if (state[SDL_SCANCODE_SPACE])
+	{
+		if (GetReloadTimer() <= 0.0f)
+		{
+			Munitions* laser = new Munitions(game, GetPosition());
+			Reload();
+		}
+		//std::vector<SDL_Texture*> anims = {
+		//	game->GetTexture("Assets/Laser.png"),
+		//};
+		//laser->SetAnimTextures(anims);
 	}
 }
