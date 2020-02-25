@@ -26,7 +26,7 @@ void Munitions::UpdateActor(float deltaTime)
 		SetShotSpeed(GetShotSpeed() - 0.5f);
 	}
 	SetScale(GetScale() + 0.02f);
-	// Restrict position to left half of screen
+	// Destroy once offscreen
 	if (pos.x > 1024.0f + 25 * GetScale())
 	{
 		SetState(EDead);

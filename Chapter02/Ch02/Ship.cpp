@@ -8,6 +8,7 @@ Ship::Ship(Game* game)
 	, mRightSpeed(0.0f)
 	, mDownSpeed(0.0f)
 	, mReloadSpeed(0.5f)
+	, mReloadTimer(0.0f)
 {
 	// Create an animated sprite component
 	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
