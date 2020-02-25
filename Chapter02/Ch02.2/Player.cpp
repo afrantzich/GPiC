@@ -30,6 +30,8 @@ void Player::ProcessKeyboard(const uint8_t* state, Game* game)
 	mRightSpeed = 0.0f;
 	mDownSpeed = 0.0f;
 	// right/left
+	// find out how to overload the draw function to change
+	// movement animations
 	if (state[SDL_SCANCODE_D])
 	{
 		mRightSpeed += 250.0f;

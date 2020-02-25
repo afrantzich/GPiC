@@ -147,7 +147,7 @@ void Game::LoadData()
 {
 	// Create player
 	mPlayer = new Player(this);
-	mPlayer->SetPosition(Vector2(100.0f, 384.0f));
+	mPlayer->SetPosition(Vector2(512.0f, 600.0f));
 	mPlayer->SetScale(1.0f);
 
 	// Create actor for the background (this doesn't need a subclass)

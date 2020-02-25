@@ -45,5 +45,5 @@ private:
 	bool mUpdatingActors;
 
 	// Game-specific
-	class Ship* mShip;
+	class Player* mPlayer;
 };
