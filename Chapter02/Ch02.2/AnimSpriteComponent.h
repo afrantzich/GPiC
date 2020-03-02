@@ -11,7 +11,9 @@ public:
 	void SetAnimTextures(const std::vector<SDL_Texture*>& textures);
 	// Set/get the animation FPS
 	float GetAniFPS() const { return mAnimFPS; }
-	void SetAanimFPS(float fps) { mAnimFPS = fps; }
+	void SetAnimFPS(float fps) { mAnimFPS = fps; }
+	bool GetLoop() const { return mLoop; }
+	void SetLoop(bool loop) { mLoop = loop; }
 private:
 	// All textures in the animation
 	std::vector<SDL_Texture*> mAnimTextures;
@@ -19,4 +21,6 @@ private:
 	float mCurrFrame;
 	// Animation frame rate
 	float mAnimFPS;
+	// loop option
+	bool mLoop;
 };
