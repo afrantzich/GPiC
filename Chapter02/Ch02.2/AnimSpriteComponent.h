@@ -14,6 +14,10 @@ public:
 	void SetAnimFPS(float fps) { mAnimFPS = fps; }
 	bool GetLoop() const { return mLoop; }
 	void SetLoop(bool loop) { mLoop = loop; }
+	int GetStart() const { return mStart; }
+	int GetStop() const { return mStop; }
+	void SetStart(int start) { mStart = start; }
+	void SetStop(int stop) { mStop = stop; }
 private:
 	// All textures in the animation
 	std::vector<SDL_Texture*> mAnimTextures;
@@ -23,4 +27,7 @@ private:
 	float mAnimFPS;
 	// loop option
 	bool mLoop;
+	// Default start and stop points
+	int mStart;
+	int mStop;
 };

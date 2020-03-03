@@ -5,6 +5,9 @@ AnimSpriteComponent::AnimSpriteComponent(Actor* owner, int drawOrder)
 	:SpriteComponent(owner, drawOrder)
 	, mCurrFrame(0.0f)
 	, mAnimFPS(24.0f)
+	, mLoop(1)
+	, mStart(0)
+	, mStop(0)
 {
 }
 
@@ -19,11 +22,11 @@ void AnimSpriteComponent::Update(float deltaTime)
 		mCurrFrame += mAnimFPS * deltaTime;
 
 		// Wrap current frame if needed
-		while (mCurrFrame >= mAnimTextures.size() && mLoop)
+		while (mCurrFrame >= mAnimTextures.size())
 		{
 			mCurrFrame -= mAnimTextures.size();
 		}
-
+		
 		// Set the current texture
 		SetTexture(mAnimTextures[static_cast<int>(mCurrFrame)]);
 	}
@@ -39,3 +42,16 @@ void AnimSpriteComponent::SetAnimTextures(const std::vector<SDL_Texture*>& textu
 		SetTexture(mAnimTextures[0]);
 	}
 }
+
+/*
+void AnimSpriteComponent::SetAnimTextures(const std::vector<SDL_Texture*>& textures)
+{
+	mAnimTextures = textures;
+	if (mAnimTextures.size() > 0)
+	{
+		// Set the active texture to first frame
+		mCurrFrame = 0.0f;
+		SetTexture(mAnimTextures[0]);
+	}
+}
+*/

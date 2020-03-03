@@ -7,32 +7,46 @@ Player::Player(Game* game)
 	,mRightSpeed(0.0f)
 	,mDownSpeed(0.0f)
 {
-	Walk(game);
-}
-
-void Player::Stand(Game* game)
-{
-	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
-	std::vector<SDL_Texture*> anims = {
-		game->GetTexture("Assets/Character02.png")
-	};
-	asc->SetAnimTextures(anims);
-	asc->SetLoop(1);
-}
-
-void Player::Walk(Game* game)
-{
-	AnimSpriteComponent* walkLoop = new AnimSpriteComponent(this);
+	AnimSpriteComponent* playerAnimations = new AnimSpriteComponent(this);
 	std::vector<SDL_Texture*> anims = {
 		game->GetTexture("Assets/Character02.png")
 		,game->GetTexture("Assets/Character03.png")
 		,game->GetTexture("Assets/Character04.png")
 		,game->GetTexture("Assets/Character05.png")
 		,game->GetTexture("Assets/Character06.png")
-		,game->GetTexture("Assets/Character01.png")
+		,game->GetTexture("Assets/Character07.png")
+		,game->GetTexture("Assets/Character08.png")
+		,game->GetTexture("Assets/Character09.png")
+		,game->GetTexture("Assets/Character10.png")
+		,game->GetTexture("Assets/Character11.png")
+		,game->GetTexture("Assets/Character12.png")
+		,game->GetTexture("Assets/Character13.png")
+		,game->GetTexture("Assets/Character14.png")
+		,game->GetTexture("Assets/Character15.png")
+		,game->GetTexture("Assets/Character16.png")
+		,game->GetTexture("Assets/Character17.png")
+		,game->GetTexture("Assets/Character18.png")
 	};
-	walkLoop->SetAnimTextures(anims);
-	walkLoop->SetLoop(1);
+	playerAnimations->SetAnimTextures(anims);
+	playerAnimations->SetStart(0);
+	playerAnimations->SetStop(0);
+	playerAnimations->SetLoop(1);
+	SetAnimSpriteComp(playerAnimations);
+}
+
+
+void Player::Stand(Game* game)
+{
+	animations->SetStart(0);
+	animations->SetStop(0);
+	animations->SetLoop(1);
+}
+
+void Player::Walk(Game* game)
+{
+	animations->SetStart(0);
+	animations->SetStop(6);
+	animations->SetLoop(1);
 }
 
 void Player::UpdateActor(float deltaTime)
@@ -60,6 +74,10 @@ void Player::ProcessKeyboard(const uint8_t* state, Game* game)
 	if (state[SDL_SCANCODE_A])
 	{
 		mRightSpeed -= 250.0f;
+	}
+	if (!(state[SDL_SCANCODE_D] || state[SDL_SCANCODE_A]))
+	{
+		Stand(game);
 	}
 	// up/down
 	//if (state[SDL_SCANCODE_S])
