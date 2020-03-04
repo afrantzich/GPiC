@@ -8,6 +8,7 @@ AnimSpriteComponent::AnimSpriteComponent(Actor* owner, int drawOrder)
 	, mLoop(1)
 	, mStart(0)
 	, mStop(0)
+	, mDefaultFrame(0)
 {
 }
 
@@ -22,10 +23,20 @@ void AnimSpriteComponent::Update(float deltaTime)
 		mCurrFrame += mAnimFPS * deltaTime;
 
 		// Wrap current frame if needed
-		while (mCurrFrame >= mAnimTextures.size())
+		if (mCurrFrame > GetStop())
 		{
-			mCurrFrame -= mAnimTextures.size();
+			if (GetLoop())
+			{
+				mCurrFrame = GetStart();
+			}
+			else
+			{
+				mCurrFrame = GetDefaultFrame();
+				SetStart(mCurrFrame);
+				SetStop(mCurrFrame);
+			}
 		}
+
 		
 		// Set the current texture
 		SetTexture(mAnimTextures[static_cast<int>(mCurrFrame)]);

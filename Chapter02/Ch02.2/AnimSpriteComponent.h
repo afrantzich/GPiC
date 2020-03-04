@@ -18,6 +18,7 @@ public:
 	int GetStop() const { return mStop; }
 	void SetStart(int start) { mStart = start; }
 	void SetStop(int stop) { mStop = stop; }
+	int GetDefaultFrame() const { return mDefaultFrame; }
 private:
 	// All textures in the animation
 	std::vector<SDL_Texture*> mAnimTextures;
@@ -27,7 +28,8 @@ private:
 	float mAnimFPS;
 	// loop option
 	bool mLoop;
-	// Default start and stop points
+	// Start and stop points
 	int mStart;
 	int mStop;
+	int mDefaultFrame;
 };

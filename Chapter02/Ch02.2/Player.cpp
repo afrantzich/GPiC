@@ -45,8 +45,15 @@ void Player::Stand(Game* game)
 void Player::Walk(Game* game)
 {
 	animations->SetStart(0);
-	animations->SetStop(6);
+	animations->SetStop(5);
 	animations->SetLoop(1);
+}
+
+void Player::Jump(Game* game)
+{
+	animations->SetStart(6);
+	animations->SetStop(14);
+	animations->SetLoop(0);
 }
 
 void Player::UpdateActor(float deltaTime)
@@ -66,19 +73,33 @@ void Player::ProcessKeyboard(const uint8_t* state, Game* game)
 	mDownSpeed = 0.0f;
 	// right/left
 	// modify AnimSpriteComponent to allow non looping option
-	if (state[SDL_SCANCODE_D])
+	if (state[SDL_SCANCODE_SPACE])
+	{
+		Jump(game);
+		if (state[SDL_SCANCODE_D])
+		{
+			mRightSpeed += 250.0f;
+		}
+		if (state[SDL_SCANCODE_A])
+		{
+			mRightSpeed -= 250.0f;
+		}
+	}
+	if (state[SDL_SCANCODE_D] && animations->GetStart() < 6)
 	{
 		mRightSpeed += 250.0f;
 		Walk(game);
 	}
-	if (state[SDL_SCANCODE_A])
+	if (state[SDL_SCANCODE_A] && animations->GetStart() < 6)
 	{
 		mRightSpeed -= 250.0f;
+		Walk(game);
 	}
-	if (!(state[SDL_SCANCODE_D] || state[SDL_SCANCODE_A]))
+	if (!(state[SDL_SCANCODE_D] || state[SDL_SCANCODE_A]) && animations->GetStart() < 6)
 	{
 		Stand(game);
 	}
+
 	// up/down
 	//if (state[SDL_SCANCODE_S])
 	//{
