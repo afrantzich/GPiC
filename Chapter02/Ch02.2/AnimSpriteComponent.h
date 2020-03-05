@@ -12,6 +12,9 @@ public:
 	// Set/get the animation FPS
 	float GetAniFPS() const { return mAnimFPS; }
 	void SetAnimFPS(float fps) { mAnimFPS = fps; }
+	// get current frame
+	float GetCurrFrame() const { return mCurrFrame; }
+
 	bool GetLoop() const { return mLoop; }
 	void SetLoop(bool loop) { mLoop = loop; }
 	int GetStart() const { return mStart; }

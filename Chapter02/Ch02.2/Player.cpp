@@ -31,28 +31,36 @@ Player::Player(Game* game)
 	playerAnimations->SetStart(0);
 	playerAnimations->SetStop(0);
 	playerAnimations->SetLoop(1);
+	playerAnimations->SetAnimFPS(12);
 	SetAnimSpriteComp(playerAnimations);
 }
 
 
-void Player::Stand(Game* game)
+void Player::Stand()
 {
 	animations->SetStart(0);
 	animations->SetStop(0);
 	animations->SetLoop(1);
 }
 
-void Player::Walk(Game* game)
+void Player::Walk()
 {
 	animations->SetStart(0);
 	animations->SetStop(5);
 	animations->SetLoop(1);
 }
 
-void Player::Jump(Game* game)
+void Player::Jump()
 {
 	animations->SetStart(6);
 	animations->SetStop(14);
+	animations->SetLoop(0);
+}
+
+void Player::Punch()
+{
+	animations->SetStart(15);
+	animations->SetStop(17);
 	animations->SetLoop(0);
 }
 
@@ -63,6 +71,16 @@ void Player::UpdateActor(float deltaTime)
 	Vector2 pos = GetPosition();
 	pos.x += mRightSpeed * deltaTime;
 	pos.y += mDownSpeed * deltaTime;
+	if (pos.x < -2)
+	{
+		pos.x = 1055;
+	}
+	if (pos.x > 1055)
+	{
+		pos.x = -2;
+	}
+
+	// wait for collision detection lesson for adjusting pos.y when jumping? We shall see...
 
 	SetPosition(pos);
 }
@@ -72,33 +90,37 @@ void Player::ProcessKeyboard(const uint8_t* state, Game* game)
 	mRightSpeed = 0.0f;
 	mDownSpeed = 0.0f;
 	// right/left
-	// modify AnimSpriteComponent to allow non looping option
-	if (state[SDL_SCANCODE_SPACE])
-	{
-		Jump(game);
-		if (state[SDL_SCANCODE_D])
-		{
-			mRightSpeed += 250.0f;
-		}
-		if (state[SDL_SCANCODE_A])
-		{
-			mRightSpeed -= 250.0f;
-		}
-	}
-	if (state[SDL_SCANCODE_D] && animations->GetStart() < 6)
+	// Perform nonlooping cases before looping cases
+	if (state[SDL_SCANCODE_D])
 	{
 		mRightSpeed += 250.0f;
-		Walk(game);
+	}
+	if (state[SDL_SCANCODE_A])
+	{
+		mRightSpeed -= 250.0f;
+	}
+	if (state[SDL_SCANCODE_SPACE])
+	{
+		Jump();
+	}
+	if (state[SDL_SCANCODE_P])
+	{
+		Punch();
+	}
+
+	if (state[SDL_SCANCODE_D] && animations->GetStart() < 6)
+	{
+		Walk();
 	}
 	if (state[SDL_SCANCODE_A] && animations->GetStart() < 6)
 	{
-		mRightSpeed -= 250.0f;
-		Walk(game);
+		Walk();
 	}
 	if (!(state[SDL_SCANCODE_D] || state[SDL_SCANCODE_A]) && animations->GetStart() < 6)
 	{
-		Stand(game);
+		Stand();
 	}
+
 
 	// up/down
 	//if (state[SDL_SCANCODE_S])

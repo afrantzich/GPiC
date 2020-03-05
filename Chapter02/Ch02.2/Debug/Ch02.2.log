@@ -1,2 +1,10 @@
-﻿  Player.cpp
+﻿  AnimSpriteComponent.cpp
+C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\AnimSpriteComponent.cpp(28,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\AnimSpriteComponent.cpp(36,26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\AnimSpriteComponent.cpp(40,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\AnimSpriteComponent.cpp(41,14): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\AnimSpriteComponent.cpp(42,13): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Game.cpp
+  Player.cpp
+  Generating Code...
   Ch02.2.vcxproj -> C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\Debug\Ch02.2.exe
