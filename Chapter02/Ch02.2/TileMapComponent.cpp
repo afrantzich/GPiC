@@ -1,4 +1,7 @@
 #include <algorithm>
+#include <fstream>
+#include <sstream>
+//#include <iostream>
 #include "TileMapComponent.h"
 #include "Actor.h"
 #include "SDL_image.h"
@@ -62,5 +65,17 @@ void TileMapComponent::LoadCSV(const std::string& fileName)
 
 	//Load CSV
 	// http://forums.codeguru.com/showthread.php?396459-Reading-CSV-file-into-an-array
-	// while (getline(ss, int, ',')) and keep the 1D array I think
+	std::ifstream in(fileName);
+	std::string line, num;
+
+	while (std::getline(in, line))
+	{
+		std::stringstream lineStream(line);
+		while (std::getline(lineStream, num, ','))
+		{
+			//std::cout << num << '\n';
+			values.push_back(std::stoi(num));
+		}
+	}
+
 }

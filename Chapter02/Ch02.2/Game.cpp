@@ -178,6 +178,7 @@ void Game::LoadData()
 	temp->SetPosition(Vector2(500.0f, 325.0f));
 	TileMapComponent* tiles = new TileMapComponent(temp);
 	tiles->LoadTileSet("Assets/Tiles.png", mRenderer);
+	tiles->LoadCSV("Assets/MapLayer1.csv");
 
 }
 

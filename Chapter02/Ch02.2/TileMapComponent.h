@@ -10,7 +10,7 @@ public:
 
 	void Draw(SDL_Renderer* renderer) override;
 	void LoadTileSet(const std::string& fileName, SDL_Renderer* renderer);
-	void LoadCSV(const std::string& fileName)
+	void LoadCSV(const std::string& fileName);
 
 protected:
 	SDL_Texture* mTiles;
