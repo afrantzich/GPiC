@@ -1,4 +1,6 @@
-﻿  Game.cpp
-  TileMapComponent.cpp
-  Generating Code...
+﻿  TileMapComponent.cpp
+C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\TileMapComponent.cpp(16,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\TileMapComponent.cpp(23,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\TileMapComponent.cpp(23,23): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\TileMapComponent.cpp(26,19): warning C4018: '<': signed/unsigned mismatch
   Ch02.2.vcxproj -> C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\Debug\Ch02.2.exe

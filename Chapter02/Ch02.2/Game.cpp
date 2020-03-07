@@ -175,9 +175,9 @@ void Game::LoadData()
 
 	// Testing tiles
 	temp = new Actor(this);
-	temp->SetPosition(Vector2(500.0f, 325.0f));
-	TileMapComponent* tiles = new TileMapComponent(temp);
-	tiles->LoadTileSet("Assets/Tiles.png", mRenderer);
+	//temp->SetPosition(Vector2(0.0f, 0.0f));
+	TileMapComponent* tiles = new TileMapComponent(temp, 50);
+	tiles->LoadTileSet("Assets/Tiles.png", mRenderer, 256, 768);
 	tiles->LoadCSV("Assets/MapLayer1.csv");
 
 }

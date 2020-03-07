@@ -1,46 +1,72 @@
 #include <algorithm>
 #include <fstream>
 #include <sstream>
-//#include <iostream>
+#include <iostream>
 #include "TileMapComponent.h"
 #include "Actor.h"
 #include "SDL_image.h"
 
 
-TileMapComponent::TileMapComponent(class Actor* owner, int drawOrder)
+TileMapComponent::TileMapComponent(class Actor* owner, int drawOrder, int size)
 	:SpriteComponent(owner, drawOrder)
-	, tileSize(32)
 	, mTiles(nullptr)
+	, pngHeight(0)
+	, pngWidth(0)
 {
-	
-
+	tileSize = size;
 }
 
 void TileMapComponent::Draw(SDL_Renderer* renderer)
 {
-	if (mTiles)
-	{
-		SDL_Rect r;
-		// Scale the width/height by owner's scale
-		r.w = static_cast<int>(tileSize * mOwner->GetScale());
-		r.h = static_cast<int>(tileSize * mOwner->GetScale());
-		// Center the rectangle around the position of the owner
-		r.x = static_cast<int>(mOwner->GetPosition().x - r.w / 2);
-		r.y = static_cast<int>(mOwner->GetPosition().y - r.h / 2);
+	int col = 0;
+	int row = 0;
+	const int tilesInRow = 1024 / tileSize;
+	int target;
 
-		// Draw (have to convert angle from radians to degrees, and clockwise to counter)
-		SDL_RenderCopyEx(renderer,
-			mTiles,
-			nullptr,
-			&r,
-			-Math::ToDegrees(mOwner->GetRotation()),
-			nullptr,
-			SDL_FLIP_NONE);
+
+	while (col * row < mMap.size())
+	{
+		col = 0;
+		while (col < 1024 / tileSize)
+		{
+			target = mMap[col * row];
+			if (target > -1)
+			{
+				SDL_Rect src;
+				// Original Tile Set rect
+				src.w = tileSize;
+				src.h = tileSize;
+				// position will start at 0, 0
+				src.x = mMap[col * row] ;
+				src.y = 0;
+				SDL_Rect r;
+				// Scale the width/height by owner's scale
+				r.w = static_cast<int>(tileSize * mOwner->GetScale());
+				r.h = static_cast<int>(tileSize * mOwner->GetScale());
+				// position will start at 0, 0
+				r.x = static_cast<int>((row * tilesInRow + col) % tilesInRow * tileSize);
+				r.y = static_cast<int>((row * tilesInRow + col) / tilesInRow * tileSize);
+
+				// Draw (have to convert angle from radians to degrees, and clockwise to counter)
+				SDL_RenderCopyEx(renderer,
+					mTiles,
+					&src,
+					&r,
+					-Math::ToDegrees(mOwner->GetRotation()),
+					nullptr,
+					SDL_FLIP_NONE);
+				}
+			col++;
+		}
+		row++;
 	}
 }
 
-void TileMapComponent::LoadTileSet(const std::string& fileName, SDL_Renderer* renderer)
+void TileMapComponent::LoadTileSet(const std::string& fileName, SDL_Renderer* renderer, int wid, int ht)
 {
+	pngWidth = wid;
+	pngHeight = ht;
+
 	SDL_Texture* tex = nullptr;
 
 	// Load from file
@@ -61,10 +87,7 @@ void TileMapComponent::LoadTileSet(const std::string& fileName, SDL_Renderer* re
 
 void TileMapComponent::LoadCSV(const std::string& fileName)
 {
-	std::vector<int> values;
-
 	//Load CSV
-	// http://forums.codeguru.com/showthread.php?396459-Reading-CSV-file-into-an-array
 	std::ifstream in(fileName);
 	std::string line, num;
 
@@ -74,8 +97,7 @@ void TileMapComponent::LoadCSV(const std::string& fileName)
 		while (std::getline(lineStream, num, ','))
 		{
 			//std::cout << num << '\n';
-			values.push_back(std::stoi(num));
+			mMap.push_back(std::stoi(num));
 		}
 	}
-
 }
