@@ -149,7 +149,7 @@ void Game::LoadData()
 	// Create player
 	mPlayer = new Player(this);
 	mPlayer->SetPosition(Vector2(512.0f, 600.0f));
-	mPlayer->SetScale(1.0f);
+	mPlayer->SetScale(.8f);
 
 	Actor* temp = new Actor(this);
 	/*
