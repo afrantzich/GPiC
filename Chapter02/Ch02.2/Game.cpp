@@ -151,8 +151,9 @@ void Game::LoadData()
 	mPlayer->SetPosition(Vector2(512.0f, 600.0f));
 	mPlayer->SetScale(1.0f);
 
-	// Create actor for the background (this doesn't need a subclass)
 	Actor* temp = new Actor(this);
+	/*
+	// Create actor for the background (this doesn't need a subclass)
 	temp->SetPosition(Vector2(512.0f, 384.0f));
 	// Create the "far back" background
 	BGSpriteComponent* bg = new BGSpriteComponent(temp);
@@ -172,6 +173,7 @@ void Game::LoadData()
 	};
 	bg->SetBGTextures(bgtexs);
 	bg->SetScrollSpeed(-200.0f);
+	*/
 
 	// Testing tiles
 	temp = new Actor(this);

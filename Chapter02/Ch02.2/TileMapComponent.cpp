@@ -20,16 +20,16 @@ void TileMapComponent::Draw(SDL_Renderer* renderer)
 {
 	int col = 0;
 	int row = 0;
-	const int tilesInRow = 1024 / tileSize;
+	const int tilesInRow = 32; //1024 / tileSize;
 	int target;
 
 
-	while (col * row < mMap.size())
+	while (row * tilesInRow + col < mMap.size())
 	{
 		col = 0;
-		while (col < 1024 / tileSize)
+		while (col < tilesInRow)
 		{
-			target = mMap[col * row];
+			target = mMap[row * tilesInRow + col];
 			if (target > -1)
 			{
 				SDL_Rect src;
@@ -37,8 +37,9 @@ void TileMapComponent::Draw(SDL_Renderer* renderer)
 				src.w = tileSize;
 				src.h = tileSize;
 				// position will start at 0, 0
-				src.x = mMap[col * row] ;
-				src.y = 0;
+				src.x = target % 8 * tileSize;
+				src.y = target / 8 * tileSize;
+
 				SDL_Rect r;
 				// Scale the width/height by owner's scale
 				r.w = static_cast<int>(tileSize * mOwner->GetScale());
@@ -55,7 +56,7 @@ void TileMapComponent::Draw(SDL_Renderer* renderer)
 					-Math::ToDegrees(mOwner->GetRotation()),
 					nullptr,
 					SDL_FLIP_NONE);
-				}
+			}
 			col++;
 		}
 		row++;
