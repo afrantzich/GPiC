@@ -1,6 +1,6 @@
 ﻿  TileMapComponent.cpp
 C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\TileMapComponent.cpp(16,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\TileMapComponent.cpp(27,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\TileMapComponent.cpp(27,26): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\TileMapComponent.cpp(37,13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\TileMapComponent.cpp(38,13): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\TileMapComponent.cpp(40,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data

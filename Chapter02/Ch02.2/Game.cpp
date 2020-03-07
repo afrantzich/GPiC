@@ -182,6 +182,14 @@ void Game::LoadData()
 	tiles->LoadTileSet("Assets/Tiles.png", mRenderer, 256, 768);
 	tiles->LoadCSV("Assets/MapLayer1.csv");
 
+	tiles = new TileMapComponent(temp, 40);
+	tiles->LoadTileSet("Assets/Tiles.png", mRenderer, 256, 768);
+	tiles->LoadCSV("Assets/MapLayer2.csv");
+
+	tiles = new TileMapComponent(temp, 30);
+	tiles->LoadTileSet("Assets/Tiles.png", mRenderer, 256, 768);
+	tiles->LoadCSV("Assets/MapLayer3.csv");
+
 }
 
 void Game::UnloadData()

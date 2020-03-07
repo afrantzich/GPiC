@@ -24,7 +24,7 @@ void TileMapComponent::Draw(SDL_Renderer* renderer)
 	int target;
 
 
-	while (row * tilesInRow + col < mMap.size())
+	while (row * tilesInRow < mMap.size())
 	{
 		col = 0;
 		while (col < tilesInRow)
