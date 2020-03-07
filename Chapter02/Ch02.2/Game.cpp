@@ -1,4 +1,5 @@
 #include <algorithm>
+#include "TileMapComponent.h"
 #include "SpriteComponent.h"
 #include "BGSpriteComponent.h"
 #include "SDL_image.h"
@@ -171,6 +172,13 @@ void Game::LoadData()
 	};
 	bg->SetBGTextures(bgtexs);
 	bg->SetScrollSpeed(-200.0f);
+
+	// Testing tiles
+	temp = new Actor(this);
+	temp->SetPosition(Vector2(500.0f, 325.0f));
+	TileMapComponent* tiles = new TileMapComponent(temp);
+	tiles->LoadTileSet("Assets/Tiles.png", mRenderer);
+
 }
 
 void Game::UnloadData()

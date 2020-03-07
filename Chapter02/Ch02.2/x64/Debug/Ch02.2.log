@@ -1,0 +1,28 @@
+﻿BGSpriteComponent.obj : error LNK2019: unresolved external symbol SDL_RenderCopy referenced in function "public: virtual void __cdecl BGSpriteComponent::Draw(struct SDL_Renderer *)" (?Draw@BGSpriteComponent@@UEAAXPEAUSDL_Renderer@@@Z)
+Game.obj : error LNK2019: unresolved external symbol SDL_GetError referenced in function "public: bool __cdecl Game::Initialize(void)" (?Initialize@Game@@QEAA_NXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_FreeSurface referenced in function "public: struct SDL_Texture * __cdecl Game::GetTexture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?GetTexture@Game@@QEAAPEAUSDL_Texture@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Game.obj : error LNK2019: unresolved external symbol SDL_CreateWindow referenced in function "public: bool __cdecl Game::Initialize(void)" (?Initialize@Game@@QEAA_NXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_DestroyWindow referenced in function "public: void __cdecl Game::Shutdown(void)" (?Shutdown@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_GetKeyboardState referenced in function "private: void __cdecl Game::ProcessInput(void)" (?ProcessInput@Game@@AEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_PollEvent referenced in function "private: void __cdecl Game::ProcessInput(void)" (?ProcessInput@Game@@AEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_Log referenced in function "public: struct SDL_Texture * __cdecl Game::GetTexture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?GetTexture@Game@@QEAAPEAUSDL_Texture@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Game.obj : error LNK2019: unresolved external symbol SDL_CreateRenderer referenced in function "public: bool __cdecl Game::Initialize(void)" (?Initialize@Game@@QEAA_NXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_CreateTextureFromSurface referenced in function "public: struct SDL_Texture * __cdecl Game::GetTexture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?GetTexture@Game@@QEAAPEAUSDL_Texture@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Game.obj : error LNK2019: unresolved external symbol SDL_SetRenderDrawColor referenced in function "private: void __cdecl Game::GenerateOutput(void)" (?GenerateOutput@Game@@AEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_RenderClear referenced in function "private: void __cdecl Game::GenerateOutput(void)" (?GenerateOutput@Game@@AEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_RenderPresent referenced in function "private: void __cdecl Game::GenerateOutput(void)" (?GenerateOutput@Game@@AEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_DestroyTexture referenced in function "private: void __cdecl Game::UnloadData(void)" (?UnloadData@Game@@AEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_DestroyRenderer referenced in function "public: void __cdecl Game::Shutdown(void)" (?Shutdown@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_GetTicks referenced in function "public: bool __cdecl Game::Initialize(void)" (?Initialize@Game@@QEAA_NXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_Init referenced in function "public: bool __cdecl Game::Initialize(void)" (?Initialize@Game@@QEAA_NXZ)
+Game.obj : error LNK2019: unresolved external symbol SDL_Quit referenced in function "public: void __cdecl Game::Shutdown(void)" (?Shutdown@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol IMG_Init referenced in function "public: bool __cdecl Game::Initialize(void)" (?Initialize@Game@@QEAA_NXZ)
+Game.obj : error LNK2019: unresolved external symbol IMG_Quit referenced in function "public: void __cdecl Game::Shutdown(void)" (?Shutdown@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol IMG_Load referenced in function "public: struct SDL_Texture * __cdecl Game::GetTexture(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?GetTexture@Game@@QEAAPEAUSDL_Texture@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+SpriteComponent.obj : error LNK2019: unresolved external symbol SDL_QueryTexture referenced in function "public: virtual void __cdecl SpriteComponent::SetTexture(struct SDL_Texture *)" (?SetTexture@SpriteComponent@@UEAAXPEAUSDL_Texture@@@Z)
+SpriteComponent.obj : error LNK2019: unresolved external symbol SDL_RenderCopyEx referenced in function "public: virtual void __cdecl SpriteComponent::Draw(struct SDL_Renderer *)" (?Draw@SpriteComponent@@UEAAXPEAUSDL_Renderer@@@Z)
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\Users\Andrew\CraftingTable\GPiC\External\SDL\lib\win\x86\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\Andrew\CraftingTable\GPiC\External\SDL\lib\win\x86\SDL2main.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\Andrew\CraftingTable\GPiC\External\SDL\lib\win\x86\SDL2_image.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\Andrew\CraftingTable\GPiC\Chapter02\Ch02.2\x64\Debug\Ch02.2.exe : fatal error LNK1120: 24 unresolved externals
