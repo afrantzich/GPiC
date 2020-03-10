@@ -11,10 +11,13 @@
 #include "InputComponent.h"
 #include "Game.h"
 #include "Laser.h"
+#include "Asteroid.h"
+#include "Actor.h"
 
 Ship::Ship(Game* game)
 	:Actor(game)
 	,mLaserCooldown(0.0f)
+	, mCircle(nullptr)
 {
 	// Create a sprite component
 	SpriteComponent* sc = new SpriteComponent(this, 150);
@@ -28,11 +31,28 @@ Ship::Ship(Game* game)
 	ic->SetCounterClockwiseKey(SDL_SCANCODE_D);
 	ic->SetMaxForwardSpeed(300.0f);
 	ic->SetMaxAngularSpeed(Math::TwoPi);
+
+	// Create a circle component (for collision)
+	mCircle = new CircleComponent(this);
+	mCircle->SetRadius(20.0f);
 }
 
 void Ship::UpdateActor(float deltaTime)
 {
 	mLaserCooldown -= deltaTime;
+
+	// Do we intersect with an asteroid?
+	for (auto ast : GetGame()->GetAsteroids())
+	{
+		if (Intersect(*mCircle, *(ast->GetCircle())))
+		{
+			// The first asteroid we intersect with,
+			// set ourselves and the asteroid to dead
+			SetState(EPaused);
+			//ast->SetState(EDead);
+			break;
+		}
+	}
 }
 
 void Ship::ActorInput(const uint8_t* keyState)

@@ -8,6 +8,8 @@
 
 #pragma once
 #include "Actor.h"
+# include "CircleComponent.h"
+
 class Ship : public Actor
 {
 public:
@@ -15,6 +17,8 @@ public:
 
 	void UpdateActor(float deltaTime) override;
 	void ActorInput(const uint8_t* keyState) override;
+	class CircleComponent* GetCircle() { return mCircle; }
 private:
+	CircleComponent* mCircle;
 	float mLaserCooldown;
 };

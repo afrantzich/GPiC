@@ -63,6 +63,7 @@ bool Game::Initialize()
 
 void Game::RunLoop()
 {
+
 	while (mIsRunning)
 	{
 		ProcessInput();
