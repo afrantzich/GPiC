@@ -31,6 +31,8 @@ public:
 	// Any actor-specific update code (overridable)
 	virtual void UpdateActor(float deltaTime);
 
+	virtual void RespawnActor(class Game* game);
+
 	// ProcessInput function called from Game (not overridable)
 	void ProcessInput(const uint8_t* keyState);
 	// Any actor-specific input code (overridable)

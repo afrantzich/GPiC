@@ -71,6 +71,10 @@ void Actor::ActorInput(const uint8_t* keyState)
 {
 }
 
+void Actor::RespawnActor(class Game* game)
+{
+}
+
 void Actor::AddComponent(Component* component)
 {
 	// Find the insertion point in the sorted vector

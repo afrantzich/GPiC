@@ -20,6 +20,7 @@ Game::Game()
 ,mRenderer(nullptr)
 ,mIsRunning(true)
 ,mUpdatingActors(false)
+,deathTimer(2.0f)
 {
 	
 }
@@ -141,7 +142,29 @@ void Game::UpdateGame()
 	// Delete dead actors (which removes them from mActors)
 	for (auto actor : deadActors)
 	{
+		if (mShip == actor)
+		{
+			deathTimer = mShip->GetDeathTimer();
+			mShip = nullptr;
+		}
 		delete actor;
+	}
+
+	// Update deathTimer
+	if (mShip == nullptr)
+	{
+		deathTimer -= deltaTime;
+		if (deathTimer <= 0.0f)
+		{
+			mShip = new Ship(this);
+			mShip->SetPosition(Vector2(512.0f, 384.0f));
+			mShip->SetRotation(Math::PiOver2);
+			mShip->SetDeathTimer(0.0f);
+		}
+	}
+	else if (mShip->GetDeathTimer() < 2.0f)
+	{
+		mShip->SetDeathTimer(mShip->GetDeathTimer() + deltaTime);
 	}
 }
 

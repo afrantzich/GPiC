@@ -13,11 +13,13 @@
 #include "Laser.h"
 #include "Asteroid.h"
 #include "Actor.h"
+#include <iostream>
 
 Ship::Ship(Game* game)
 	:Actor(game)
 	,mLaserCooldown(0.0f)
 	, mCircle(nullptr)
+	, mDeathTimer(0.0f)
 {
 	// Create a sprite component
 	SpriteComponent* sc = new SpriteComponent(this, 150);
@@ -48,7 +50,10 @@ void Ship::UpdateActor(float deltaTime)
 		{
 			// The first asteroid we intersect with,
 			// set ourselves and the asteroid to dead
-			SetState(EPaused);
+			if ( mDeathTimer >= 2.0f)
+			{
+				SetState(EDead);
+			}
 			//ast->SetState(EDead);
 			break;
 		}
@@ -67,4 +72,9 @@ void Ship::ActorInput(const uint8_t* keyState)
 		// Reset laser cooldown (half second)
 		mLaserCooldown = 0.5f;
 	}
+}
+
+void Ship::RespawnActor(class Game* game)
+{
+	game->AddActor(this);
 }
