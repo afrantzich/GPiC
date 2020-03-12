@@ -10,9 +10,12 @@
 #include "Actor.h"
 
 MoveComponent::MoveComponent(class Actor* owner, int updateOrder)
-:Component(owner, updateOrder)
-,mAngularSpeed(0.0f)
-,mForwardSpeed(0.0f)
+	:Component(owner, updateOrder)
+	, mAngularSpeed(0.0f)
+	, mForwardSpeed(0.0f)
+	, mMass(1.0f)
+	, mSumForces(0.0f)
+	, mVelocity(0.0f)
 {
 	
 }
@@ -29,6 +32,11 @@ void MoveComponent::Update(float deltaTime)
 	if (!Math::NearZero(mForwardSpeed))
 	{
 		Vector2 pos = mOwner->GetPosition();
+		// calc acc from forces, velocity from acc, and pos from velocity
+		float acc = mSumForces / mMass;
+		mVelocity += acc * deltaTime;
+		pos += mOwner->GetForward() * mVelocity * deltaTime;
+
 		pos += mOwner->GetForward() * mForwardSpeed * deltaTime;
 		
 		// (Screen wrapping code only for asteroids)

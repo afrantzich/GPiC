@@ -21,9 +21,23 @@ public:
 	float GetForwardSpeed() const { return mForwardSpeed; }
 	void SetAngularSpeed(float speed) { mAngularSpeed = speed; }
 	void SetForwardSpeed(float speed) { mForwardSpeed = speed; }
+
+	// Newtonian
+	float GetMass() const { return mMass; }
+	float GetSumForces() const { return mSumForces; }
+	float GetVelocity() const { return mVelocity; }
+	void SetMass(float mass) { mMass = mass; }
+	void SetVelocity(float vel) { mVelocity = vel; }
+	void AddForce(float force) { mSumForces += force; }
+
 private:
 	// Controls rotation (radians/second)
 	float mAngularSpeed;
 	// Controls forward movement (units/second)
 	float mForwardSpeed;
+
+	// Newtonian physics
+	float mMass;
+	float mSumForces;
+	float mVelocity;
 };
