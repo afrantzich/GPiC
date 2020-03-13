@@ -23,7 +23,8 @@ Laser::Laser(Game* game)
 
 	// Create a move component, and set a forward speed
 	MoveComponent* mc = new MoveComponent(this);
-	mc->SetForwardSpeed(800.0f);
+	mc->SetMass(0.005f);
+	mc->AddForce(GetForward() * 400.0f);
 
 	// Create a circle component (for collision)
 	mCircle = new CircleComponent(this);

@@ -31,7 +31,7 @@ Ship::Ship(Game* game)
 	ic->SetBackKey(SDL_SCANCODE_S);
 	ic->SetClockwiseKey(SDL_SCANCODE_A);
 	ic->SetCounterClockwiseKey(SDL_SCANCODE_D);
-	ic->SetMaxForwardSpeed(300.0f);
+	ic->SetMaxForwardSpeed(100.0f);
 	ic->SetMaxAngularSpeed(Math::TwoPi);
 
 	// Create a circle component (for collision)

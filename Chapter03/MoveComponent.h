@@ -8,6 +8,7 @@
 
 #pragma once
 #include "Component.h"
+#include "Math.h"
 
 class MoveComponent : public Component
 {
@@ -24,11 +25,11 @@ public:
 
 	// Newtonian
 	float GetMass() const { return mMass; }
-	float GetSumForces() const { return mSumForces; }
-	float GetVelocity() const { return mVelocity; }
+	Vector2 GetSumForces() const { return mSumForces; }
+	Vector2 GetVelocity() const { return mVelocity; }
 	void SetMass(float mass) { mMass = mass; }
-	void SetVelocity(float vel) { mVelocity = vel; }
-	void AddForce(float force) { mSumForces += force; }
+	void SetVelocity(Vector2 vel) { mVelocity = vel; }
+	void AddForce(Vector2 force) { mSumForces += force; }
 
 private:
 	// Controls rotation (radians/second)
@@ -38,6 +39,6 @@ private:
 
 	// Newtonian physics
 	float mMass;
-	float mSumForces;
-	float mVelocity;
+	Vector2 mSumForces;
+	Vector2 mVelocity;
 };
