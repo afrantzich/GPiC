@@ -8,10 +8,11 @@
 
 #pragma once
 #include "Actor.h"
+
 class Laser : public Actor
 {
 public:
-	Laser(class Game* game);
+	Laser(class Game* game, Vector2 pos, float rot);
 
 	void UpdateActor(float deltaTime) override;
 private:

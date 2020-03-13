@@ -18,8 +18,6 @@ public:
 	void UpdateActor(float deltaTime) override;
 	void ActorInput(const uint8_t* keyState) override;
 
-	void RespawnActor(class Game* game) override;
-
 	float GetDeathTimer() { return mDeathTimer; }
 	void SetDeathTimer(float timer) { mDeathTimer = timer; }
 
