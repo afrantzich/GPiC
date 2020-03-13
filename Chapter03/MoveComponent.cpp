@@ -23,14 +23,15 @@ MoveComponent::MoveComponent(class Actor* owner, int updateOrder)
 
 void MoveComponent::Update(float deltaTime)
 {
-	/*
+	
 	// Gravity
+	/*
 	if (mMass > 0.01f)
 	{
 		AddForce(Vector2 (0.0f, 20.0f));
 	}
 	*/
-
+	
 	if (!Math::NearZero(mAngularSpeed))
 	{
 		float rot = mOwner->GetRotation();
@@ -52,9 +53,10 @@ void MoveComponent::Update(float deltaTime)
 	else if (pos.x > 1024.0f) { pos.x = 2.0f; }
 
 	if (pos.y < 0.0f) { pos.y = 766.0f; }
-	else if (pos.y > 766.0f) { pos.y = 0.0f; }
+	//else if (pos.y > 766.0f) { pos.y = 0.0f; }
 	
-	/*  Sticky floor
+	//  Sticky floor
+	/*
 	else if (pos.y >= 764.0f && mMass > 0.01f) { 
 		pos.y = 764.0f;
 		// Stop downward velocity
@@ -63,6 +65,7 @@ void MoveComponent::Update(float deltaTime)
 		mVelocity.x /= 1.05f;
 	}
 	*/
+	
 
 	mSumForces = Vector2(0.0f, 0.0f);
 	mOwner->SetPosition(pos);
