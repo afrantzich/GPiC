@@ -7,8 +7,12 @@
 // ----------------------------------------------------------------
 
 #include "MoveComponent.h"
+#include "Asteroid.h"
+#include "Game.h"
 #include "Actor.h"
+#include "CircleComponent.h"
 #include <iostream>
+#include <algorithm>
 
 MoveComponent::MoveComponent(class Actor* owner, int updateOrder)
 	:Component(owner, updateOrder)
@@ -17,6 +21,7 @@ MoveComponent::MoveComponent(class Actor* owner, int updateOrder)
 	, mMass(0.05f)
 	, mSumForces(Vector2 (0.0f, 0.0f))
 	, mVelocity(Vector2 (0.0f, 0.0f))
+	, mAsteroidColl(0.0f)
 {
 	
 }
@@ -66,6 +71,22 @@ void MoveComponent::Update(float deltaTime)
 	}
 	*/
 	
+	/*
+	// Asteroid <-> Asteroid collision
+	// Do we intersect with an asteroid?
+	if (mAsteroidColl != deltaTime)
+	{
+		std::vector<class Asteroid*> asts = mOwner->GetGame()->GetAsteroids();
+		for (int i = 0; i < asts.size() - 1; i++)
+		{
+			if (Intersect(*(asts[i]->GetCircle()) , *(asts[i + 1]->GetCircle())))
+			{
+				AddForce()
+			}
+		}
+		mAsteroidColl = deltaTime;
+	}
+	*/
 
 	mSumForces = Vector2(0.0f, 0.0f);
 	mOwner->SetPosition(pos);

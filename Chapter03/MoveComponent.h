@@ -41,4 +41,6 @@ private:
 	float mMass;
 	Vector2 mSumForces;
 	Vector2 mVelocity;
+
+	float mAsteroidColl;
 };

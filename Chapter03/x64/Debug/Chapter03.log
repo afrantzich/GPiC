@@ -1,0 +1,20 @@
+﻿  Actor.cpp
+  Asteroid.cpp
+  CircleComponent.cpp
+  Component.cpp
+  Game.cpp
+C:\Users\Andrew\CraftingTable\GPiC\Chapter03\Game.cpp(176,7): error C2039: 'Intersect': is not a member of 'Asteroid'
+C:\Users\Andrew\CraftingTable\GPiC\Chapter03\Asteroid.h(11): message : see declaration of 'Asteroid'
+C:\Users\Andrew\CraftingTable\GPiC\Chapter03\Game.cpp(176,24): error C2065: 'mCircle': undeclared identifier
+C:\Users\Andrew\CraftingTable\GPiC\Chapter03\Game.cpp(180,9): error C2065: 'mDeathTimer': undeclared identifier
+C:\Users\Andrew\CraftingTable\GPiC\Chapter03\Game.cpp(182,15): error C2065: 'EDead': undeclared identifier
+C:\Users\Andrew\CraftingTable\GPiC\Chapter03\Game.cpp(182,6): error C3861: 'SetState': identifier not found
+  InputComponent.cpp
+  Laser.cpp
+  Main.cpp
+  Math.cpp
+  MoveComponent.cpp
+  Random.cpp
+  Ship.cpp
+  SpriteComponent.cpp
+  Generating Code...
