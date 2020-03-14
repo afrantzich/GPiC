@@ -29,7 +29,7 @@ void TileMapComponent::Draw(SDL_Renderer* renderer)
 		col = 0;
 		while (col < tilesInRow)
 		{
-			target = mMap[row * tilesInRow + col];
+			target = mMap[row * + tilesInRow + col];
 			if (target > -1)
 			{
 				SDL_Rect src;

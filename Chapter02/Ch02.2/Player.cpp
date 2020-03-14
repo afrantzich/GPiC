@@ -123,12 +123,14 @@ void Player::ProcessKeyboard(const uint8_t* state, Game* game)
 
 
 	// up/down
-	//if (state[SDL_SCANCODE_S])
-	//{
-	//	mDownSpeed += 300.0f;
-	//}
-	//if (state[SDL_SCANCODE_W])
-	//{
-	//	mDownSpeed -= 300.0f;
-	//}
+	/*
+	if (state[SDL_SCANCODE_S])
+	{
+		mDownSpeed += 300.0f;
+	}
+	if (state[SDL_SCANCODE_W])
+	{
+		mDownSpeed -= 300.0f;
+	}
+	*/
 }
