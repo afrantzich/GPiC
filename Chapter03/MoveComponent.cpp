@@ -53,7 +53,7 @@ void MoveComponent::Update(float deltaTime)
 	else if (pos.x > 1024.0f) { pos.x = 2.0f; }
 
 	if (pos.y < 0.0f) { pos.y = 766.0f; }
-	//else if (pos.y > 766.0f) { pos.y = 0.0f; }
+	else if (pos.y > 766.0f) { pos.y = 0.0f; }
 	
 	//  Sticky floor
 	/*

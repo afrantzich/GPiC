@@ -166,6 +166,26 @@ void Game::UpdateGame()
 	{
 		mShip->SetDeathTimer(mShip->GetDeathTimer() + deltaTime);
 	}
+
+	// Asteroid <-> Asteroid collision
+		// Do we intersect with an asteroid?
+	for (auto ast : GetAsteroids())
+	{
+		for (auto ast2 : GetAsteroids())
+		{
+			if (ast->Intersect(*mCircle, *(ast->GetCircle())))
+			{
+				// The first asteroid we intersect with,
+				// set ourselves and the asteroid to dead
+				if (mDeathTimer >= 2.0f)
+				{
+					SetState(EDead);
+				}
+				//ast->SetState(EDead);
+				break;
+			}
+		}
+	}
 }
 
 void Game::GenerateOutput()
