@@ -1,0 +1,2 @@
+C:\Users\Andrew\CraftingTable\GPiC\Chapter04\Exercise4.1\Debug\Exercise4.1.exe
+C:\Users\Andrew\CraftingTable\GPiC\Chapter04\Exercise4.1\Debug\Exercise4.1.pdb
